@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         btnDec = findViewById(R.id.btnDec);
         display = findViewById(R.id.display);
 
+
+
         btn0.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
