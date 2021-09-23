@@ -171,18 +171,44 @@ public class MainActivity extends AppCompatActivity {
                     operators.removeAll(Arrays.asList("", null));
                     System.out.println(numbers.toString());
                     System.out.println(operators.toString());
-                    float total = 0;
-                    float last_value = Float.parseFloat(numbers.get(0));
-                    for (int i = 0; i < operators.size(); i++) {
+                    String value_to_display;
+                    // float total = 0;
+                    // float last_value = Float.parseFloat(numbers.get(0));
+                    float ans = 0;
+                    while(!operators.isEmpty()){
+                        if (numbers.size() > 1) {
+                            if (operators.indexOf("*") != -1) {
+                                int i = operators.indexOf("*");
+                                float multiplication = calculate("*", Float.parseFloat(numbers.get(i )), Float.parseFloat(numbers.get(i + 1)));
+                                numbers.set(i, String.valueOf(multiplication));
+                                numbers.remove(i + 1);
+                                operators.remove(i);
+                            } else if (operators.indexOf("/") != -1) {
+                                int i = operators.indexOf("/");
+                                float division = calculate("/", Float.parseFloat(numbers.get(i )), Float.parseFloat(numbers.get(i + 1)));
+                                numbers.set(i, String.valueOf(division));
+                                numbers.remove(i + 1);
+                                operators.remove(i);
+                            } else {
+                                float aos = calculate(operators.get(0), Float.parseFloat(numbers.get(0)), Float.parseFloat(numbers.get(1)));
+                                numbers.remove(1);
+                                numbers.set(0, String.valueOf(aos));
+                                operators.remove(0);
+                            }
+                        } else {
+                           break;
+                        }
+                    }
+                    ans = Float.parseFloat(numbers.get(0));
+                    /**for (int i = 0; i < operators.size(); i++) {
                         String operator = operators.get(i);
                         float next_value = Float.parseFloat(numbers.get(i + 1));
                         last_value = calculate(operator, last_value, next_value);
-                    }
-                    String value_to_display;
+                    } */
                     if (!is_float) {
-                        value_to_display = String.valueOf(Math.round(last_value));
+                        value_to_display = String.valueOf(Math.round(ans));
                     } else {
-                        value_to_display = String.valueOf(last_value);
+                        value_to_display = String.valueOf(ans);
                     }
                     display.setText(value_to_display);
                 }
