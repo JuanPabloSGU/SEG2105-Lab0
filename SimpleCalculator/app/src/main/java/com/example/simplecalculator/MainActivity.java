@@ -1,4 +1,7 @@
 package com.example.simplecalculator;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +11,20 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    public float calculate(String operator, Float value1, Float value2) {
+        switch(operator){
+            case "+":
+                return value1 + value2;
+            case "-":
+                return value1 - value2;
+            case "/":
+                return value1 / value2;
+            case "*":
+                return value1 * value2;
+        }
+        return 0;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,28 +125,28 @@ public class MainActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                display.setText(display.getText() + "+");
             }
         });
 
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                display.setText(display.getText() + "-");
             }
         });
 
         btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                display.setText(display.getText() + "/");
             }
         });
 
         btnMul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                display.setText(display.getText() + "*");
             }
         });
 
@@ -143,14 +160,34 @@ public class MainActivity extends AppCompatActivity {
         btnEql.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String equation_test = (display.getText()).toString();
+                List<String> numbers = new ArrayList<String>(Arrays.asList(equation_test.split("\\+|\\*|-|/")));
+                List<String> operators = new ArrayList<String>(Arrays.asList(equation_test.split("\\d*\\.?\\d*")));
+                boolean is_float = equation_test.indexOf(".") != -1;
+                operators.removeAll(Arrays.asList("", null));
+                System.out.println(numbers.toString());
+                System.out.println(operators.toString());
+                float total = 0;
+                float last_value = Float.parseFloat(numbers.get(0));
+                for (int i = 0; i < operators.size(); i++) {
+                    String operator = operators.get(i);
+                    float next_value = Float.parseFloat(numbers.get(i+1));
+                    last_value =  calculate(operator, last_value, next_value);
+                }
+                String value_to_display;
+                if(!is_float){
+                    value_to_display = String.valueOf(Math.round(last_value));
+                } else {
+                    value_to_display = String.valueOf(last_value);
+                }
+                display.setText(value_to_display);
             }
         });
 
         btnDec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                display.setText(display.getText() + ".");
             }
         });
 
