@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 display.setText(display.getText() + "+");
             }
         });
@@ -161,12 +162,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String equation_test = (display.getText()).toString();
+                // line below changes all '-' to '+-' past the first number
+                equation_test = equation_test.replaceAll("\\b-{1}","+-");
                 if(equation_test == ""){
                     display.setText("");
                 }
                 else {
-                    List<String> numbers = new ArrayList<String>(Arrays.asList(equation_test.split("\\+|\\*|-|/")));
-                    List<String> operators = new ArrayList<String>(Arrays.asList(equation_test.split("\\d*\\.?\\d*")));
+                    // updated regex to not detect negative sign for numbers, will now store as ["-5", "-6",...] etc.
+                    List<String> numbers = new ArrayList<String>(Arrays.asList(equation_test.split("\\+|\\*|/")));
+                    List<String> operators = new ArrayList<String>(Arrays.asList(equation_test.split("-?\\d*\\.?\\d*")));
                     boolean is_float = equation_test.indexOf(".") != -1;
                     operators.removeAll(Arrays.asList("", null));
                     System.out.println(numbers.toString());
@@ -196,15 +200,15 @@ public class MainActivity extends AppCompatActivity {
                                 operators.remove(0);
                             }
                         } else {
-                           break;
+                            break;
                         }
                     }
                     ans = Float.parseFloat(numbers.get(0));
                     /**for (int i = 0; i < operators.size(); i++) {
-                        String operator = operators.get(i);
-                        float next_value = Float.parseFloat(numbers.get(i + 1));
-                        last_value = calculate(operator, last_value, next_value);
-                    } */
+                     String operator = operators.get(i);
+                     float next_value = Float.parseFloat(numbers.get(i + 1));
+                     last_value = calculate(operator, last_value, next_value);
+                     } */
                     if (!is_float) {
                         value_to_display = String.valueOf(Math.round(ans));
                     } else {
