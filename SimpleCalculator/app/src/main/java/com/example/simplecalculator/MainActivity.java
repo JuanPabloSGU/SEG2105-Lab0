@@ -162,6 +162,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String equation_test = (display.getText()).toString();
+
+
+                if(equation_test.isEmpty()){
+                    return;
+                }
+
                 // line below changes all '-' to '+-' past the first number
                 equation_test = equation_test.replaceAll("\\b-{1}","+-");
                 if(equation_test == ""){
