@@ -116,9 +116,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-
     ImageView avatar;
     Button googleMaps;
     TextView title, helperName, helperAddress;
