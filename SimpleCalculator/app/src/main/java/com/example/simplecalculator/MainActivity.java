@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 display.setText(display.getText() + "+");
             }
         });
@@ -161,12 +162,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String equation_test = (display.getText()).toString();
+                equation_test = equation_test.replaceAll("\\b-{1}","+-");
                 if(equation_test == ""){
                     display.setText("");
                 }
+//                else if(equation_test.indexOf("(\\+|\\*|/){2,}") != -1){
+//                    display.setText("Invalid Input");
+//                }
+//                else if(equation_test == "Invalid Input"){
+//                    display.setText("Invalid Input");
+//                }
                 else {
-                    List<String> numbers = new ArrayList<String>(Arrays.asList(equation_test.split("\\+|\\*|-|/")));
-                    List<String> operators = new ArrayList<String>(Arrays.asList(equation_test.split("\\d*\\.?\\d*")));
+                    List<String> numbers = new ArrayList<String>(Arrays.asList(equation_test.split("\\+|\\*|/")));
+                    List<String> operators = new ArrayList<String>(Arrays.asList(equation_test.split("-?\\d*\\.?\\d*")));
                     boolean is_float = equation_test.indexOf(".") != -1;
                     operators.removeAll(Arrays.asList("", null));
                     System.out.println(numbers.toString());
