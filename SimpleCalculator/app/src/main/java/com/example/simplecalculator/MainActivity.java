@@ -164,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
                 String equation_test = (display.getText()).toString();
 
 
+
                 if(equation_test.isEmpty()){
                     return;
                 }
@@ -173,6 +174,12 @@ public class MainActivity extends AppCompatActivity {
                 if(equation_test == ""){
                     display.setText("");
                 }
+//                else if(equation_test.indexOf("(\\+|\\*|/){2,}") != -1){
+//                    display.setText("Invalid Input");
+//                }
+//                else if(equation_test == "Invalid Input"){
+//                    display.setText("Invalid Input");
+//                }
                 else {
                     // updated regex to not detect negative sign for numbers, will now store as ["-5", "-6",...] etc.
                     List<String> numbers = new ArrayList<String>(Arrays.asList(equation_test.split("\\+|\\*|/")));
