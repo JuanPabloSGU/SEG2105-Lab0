@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     TextView idView;
     EditText productBox;
@@ -55,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
 
     // we use onClick for the Add button in our layout to call this method
     public void newProduct(View view){
+
+        if (productBox.getText().toString().trim().length() ==0 || priceBox.getText().toString().trim().length() == 0) {
+            return;
+        }
         MyDBHandler dbHandler = new MyDBHandler(this);
 
         // get price from the text box
@@ -100,7 +104,23 @@ public class MainActivity extends AppCompatActivity {
         else
             idView.setText("No Match Found");
     }
+    public void lookupProduct(View view){
+        MyDBHandler dbHandler = new MyDBHandler(this);
 
+
+        // get product in the database
+        Product product = dbHandler.findProduct(productBox.getText().toString());
+
+        if(product!=null){
+            idView.setText(String.valueOf(product.getID()));
+            priceBox.setText(String.valueOf(product.getPrice()));
+        }
+
+        else{
+            idView.setText("No Match Found");
+        }
+
+    }
     private void viewData(){
         MyDBHandler dbHandler = new MyDBHandler(this);
 
@@ -125,4 +145,5 @@ public class MainActivity extends AppCompatActivity {
             productList.setAdapter(adapter);
         }
     }
+
 }
