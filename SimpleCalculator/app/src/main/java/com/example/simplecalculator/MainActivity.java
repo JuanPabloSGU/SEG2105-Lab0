@@ -10,8 +10,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * An class representing the calculator app.
+ */
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * Returns the value entered in the display of the calculator that the user inputted.
+     * @param operator represents the operator chosen.
+     * @param value1 represents the first value.
+     * @param value2 represents the second value.
+     * @return returns the mathematical result of the operation.
+     */
     public float calculate(String operator, Float value1, Float value2) {
         switch(operator){
             case "+":
@@ -26,21 +36,25 @@ public class MainActivity extends AppCompatActivity {
         return 0;
     }
 
+    /**
+     * onCreate are the instance variables that are used in the make up the application.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn0 = findViewById(R.id.btn0);
-        btn1 = findViewById(R.id.btn1);
-        btn2 = findViewById(R.id.btn2);
-        btn3 = findViewById(R.id.btn3);
-        btn4 = findViewById(R.id.btn4);
-        btn5 = findViewById(R.id.btn5);
-        btn6 = findViewById(R.id.btn6);
-        btn7 = findViewById(R.id.btn7);
-        btn8 = findViewById(R.id.btn8);
-        btn9 = findViewById(R.id.btn9);
+        btn0 = findViewById(R.id.btn0); // 0
+        btn1 = findViewById(R.id.btn1); // 1
+        btn2 = findViewById(R.id.btn2); // 2
+        btn3 = findViewById(R.id.btn3); // 3
+        btn4 = findViewById(R.id.btn4); // 4
+        btn5 = findViewById(R.id.btn5); // 5
+        btn6 = findViewById(R.id.btn6); // 6
+        btn7 = findViewById(R.id.btn7); // 7
+        btn8 = findViewById(R.id.btn8); // 8
+        btn9 = findViewById(R.id.btn9); // 9
         btnAdd = findViewById(R.id.btnAdd);
         btnSub = findViewById(R.id.btnSub);
         btnDiv = findViewById(R.id.btnDiv);
@@ -51,7 +65,10 @@ public class MainActivity extends AppCompatActivity {
         display = findViewById(R.id.display);
 
 
-
+        /**
+         * When this button is clicked, the resulting number is displayed.
+         * In this case the number is 0.
+         */
         btn0.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -59,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * When this button is clicked, the resulting number is displayed.
+         * In this case the number is 1.
+         */
         btn1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -66,6 +87,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * When this button is clicked, the resulting number is displayed.
+         * In this case the number is 2.
+         */
         btn2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -73,6 +98,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * When this button is clicked, the resulting number is displayed.
+         * In this case the number is 3.
+         */
         btn3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -80,6 +109,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * When this button is clicked, the resulting number is displayed.
+         * In this case the number is 3.
+         */
         btn4.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -87,6 +120,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * When this button is clicked, the resulting number is displayed.
+         * In this case the number is 4.
+         */
         btn5.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -94,6 +131,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * When this button is clicked, the resulting number is displayed.
+         * In this case the number is 6.
+         */
         btn6.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -101,6 +142,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * When this button is clicked, the resulting number is displayed.
+         * In this case the number is 7.
+         */
         btn7.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -108,6 +153,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * When this button is clicked, the resulting number is displayed.
+         * In this case the number is 8.
+         */
         btn8.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -115,6 +164,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * When this button is clicked, the resulting number is displayed.
+         * In this case the number is 9.
+         */
         btn9.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -122,6 +175,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * When this button is clicked, the resulting operation is displayed.
+         * In this case the operation is Addition.
+         */
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,6 +187,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * When this button is clicked, the resulting operation is displayed.
+         * In this case the operation is Subtraction.
+         */
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,6 +198,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * When this button is clicked, the resulting operation is displayed.
+         * In this case the operation is Division.
+         */
         btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,6 +209,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * When this button is clicked, the resulting operation is displayed.
+         * In this case the operation is Multiplication.
+         */
         btnMul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,6 +220,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * When this button is clicked, the display screen is cleared.
+         */
         btnClr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,7 +230,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * When this button is clicked, the result is the mathematical operation completed.
+         */
         btnEql.setOnClickListener(new View.OnClickListener() {
+
+            /**
+             * onClick is when the button is clicked this routine is run.
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 String equation_test = (display.getText()).toString();
@@ -232,6 +312,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * When this button is clicked, a decimal is added to the screen.
+         */
         btnDec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -244,7 +327,4 @@ public class MainActivity extends AppCompatActivity {
     Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9, btnAdd, btnSub, btnDiv, btnMul, btnClr, btnEql, btnDec;
 
     TextView display;
-
-
-
 }
